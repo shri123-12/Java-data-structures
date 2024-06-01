@@ -79,6 +79,86 @@ public class SingleLinkedList {
             }
             System.out.print(current.data);
         }
+
+        void deleteFirst()
+        {
+            if(head==null)
+            return;
+            Node t;
+            
+            t=head;
+            head=head.next;
+            t.next=null; 
+            
+        }
+
+        void delete(int pos)
+        {  Node current;
+            current=head;
+            int count=1;
+
+            while(count!=pos-1)
+            { current=current.next;
+                count++;
+            }
+            Node t;
+           t=current.next;
+           current.next=t.next;
+           t.next=null;
+        }
+        void deleteLast(){
+            Node current=head,prev=head;
+            while(current.next!=null)
+            { prev=current;
+                current=current.next;
+            }
+            prev.next=null;
+            current.next=null;
+        }
+        void reverse()
+        {
+            Node current=head;
+            Node prev=null;
+            Node next=null;
+            while(current!=null)
+            {
+                next=current.next;
+                current.next=prev;
+                prev=current;
+                current=next;
+
+            }
+            head=prev;
+        }
+        void getMiddle()
+        {
+            Node slow=head,fast=head;
+            while(fast!=null&&fast.next!=null)
+            {
+                slow=slow.next;
+                fast=fast.next.next;
+            }
+            System.out.println(slow.data);
+
+        }
+        void getNfromend(int n)
+        {
+            Node buffer=head,current=head;
+            int count=0;
+            while(count<n-1){
+                
+                buffer=buffer.next;
+                count++;
+            }
+            while(buffer.next!=null)
+            {
+                buffer=buffer.next;
+                current=current.next;
+
+            }
+            System.out.println(current.data);
+        }
+
         public static void main (String[] args){
             SingleLinkedList sll=new SingleLinkedList();
             
